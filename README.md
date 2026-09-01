@@ -1,114 +1,116 @@
 # GreaseClaw
 
-GreaseClaw 是一个运行在 Chrome 和 Edge 中的 AI 浏览器助手。它把大模型对话、浏览器自动化、Userscript 管理与 AI 编程、定时任务和云端执行整合在同一个扩展中，让用户可以用自然语言读取网页、操作页面、编写脚本并自动完成重复工作。
+English | [简体中文](README.zh-CN.md)
 
-> 当前版本：`0.0.108` · 要求 Chrome 120 或更高版本
+GreaseClaw is an AI browser assistant for Chrome and Edge. It brings LLM chat, browser automation, Userscript management and AI coding, scheduled tasks, and cloud execution into one extension—so you can read pages, operate websites, write scripts, and automate repetitive work using natural language.
 
-## 主要功能
+> Current version: `0.0.108` · Requires Chrome 120 or later
 
-### 浏览器 AI 智能体
+## Features
 
-- 使用自然语言让智能体打开网页、切换标签页、点击、输入、滚动和读取页面内容。
-- 支持页面总结、信息提取、表单填写和多步骤浏览器任务。
-- 在浏览器侧栏中边浏览边对话，无需在网页和独立聊天页面之间反复切换。
-- 对话与工具执行过程实时展示，并保存会话历史，方便继续之前的任务。
-- 支持页面上下文、截图和语音输入等交互方式。
+### Browser AI agent
 
-### Userscript 管理与 AI 编程
+- Ask the agent to open pages, switch tabs, click, type, scroll, and read page content using natural language.
+- Summarize pages, extract structured information, fill forms, and complete multi-step browser tasks.
+- Chat alongside any website in the browser side panel without repeatedly switching tabs.
+- See model output and tool activity as they happen, with conversation history saved for later.
+- Use page context, screenshots, and voice input in your conversations.
 
-GreaseClaw 内置了类似 Violentmonkey 的 Userscript 工作区：
+### Userscript management and AI coding
 
-- 新建、导入、编辑、安装、启用、停用和删除 Userscript。
-- 支持从本地文件或 URL 导入，也可前往 [Greasy Fork](https://greasyfork.org/scripts) 和 [OpenUserJS](https://openuserjs.org/) 查找脚本。
-- 在兼容的脚本网站点击安装时，可直接进入 GreaseClaw 的安装界面。
-- 扩展菜单会显示当前页面实际生效的脚本数量。
-- 内置代码编辑器、元数据解析和语法验证，支持常见的 `@match`、`@include`、`@exclude`、`@grant`、`@connect`、`@require`、`@resource` 与 `@run-at` 规则。
-- 编辑已经安装并启用的脚本时会先自动停用，避免未完成的代码继续在页面上运行。
+GreaseClaw includes a Userscript workspace inspired by Violentmonkey:
 
-Userscript 工作区还提供专门的 AI 编程能力。它与普通聊天使用同一套智能体，只额外暴露读取当前脚本、写入草稿和验证代码等工具。用户既可以要求 AI 从零编写脚本，也可以让它分析、解释、修改或仅验证当前代码；智能体只在任务需要时调用编程工具，不会强制改写脚本。
+- Create, import, edit, install, enable, disable, and remove Userscripts.
+- Import from a local file or URL, or discover scripts on [Greasy Fork](https://greasyfork.org/scripts) and [OpenUserJS](https://openuserjs.org/).
+- Open compatible install links from Userscript sites directly in GreaseClaw.
+- See how many enabled scripts match the current page in the extension menu.
+- Edit code with built-in metadata parsing and syntax validation for common rules including `@match`, `@include`, `@exclude`, `@grant`, `@connect`, `@require`, `@resource`, and `@run-at`.
+- Automatically disable an installed script before editing it, so unfinished changes cannot keep running on the page.
 
-- 可选择 AI Provider 和具体模型。
-- 支持连续对话、流式模型输出和随时停止生成。
-- 每个编程 Session 独立保存聊天记录及最新代码快照。
-- 代码写入与代码验证是独立能力，便于形成“读取 → 修改 → 验证”的迭代流程。
-- AI 生成后仍可在中央编辑器中手动微调，再进行安装。
+The Userscript workspace uses the same agent as regular chat, augmented with dedicated tools for reading the current script, writing a draft, and validating code. You can ask the AI to create a script from scratch, modify an existing script, explain or analyze it, or only validate it. Coding tools are called only when the task requires them.
 
-### 定时任务与云端任务
+- Choose an AI provider and a specific model.
+- Continue a conversation with streaming model output and stop generation at any time.
+- Keep independent coding sessions, each with its chat history and latest code snapshot.
+- Use separate write and validation tools in an iterative read → edit → validate workflow.
+- Manually fine-tune generated code in the central editor before installation.
 
-- 创建一次性、每天执行或按分钟/小时循环的浏览器任务。
-- 每个任务可单独选择 Provider、模型和本地/云端执行方式。
-- 本地任务在当前浏览器中执行；云端任务可在浏览器关闭后继续运行。
-- 支持启用、停用、测试、重试以及查看每次运行的状态和结果。
-- 云端任务页面实时展示排队、执行、完成或失败状态以及操作进度。
+### Scheduled and cloud tasks
 
-### 模型与服务商
+- Create one-time, daily, or minute/hour interval browser tasks.
+- Select a provider, model, and local or cloud execution mode for each task.
+- Run local tasks in the current browser or let cloud tasks continue while it is closed.
+- Enable, disable, test, retry, and inspect the status and result of each run.
+- Follow queued, running, completed, and failed cloud tasks with action-level progress.
 
-- 可使用 GreaseClaw Provider，通过 FreeAPIs 统一选择可用模型并查看额度。
-- 支持配置 OpenAI、Anthropic、Google、OpenRouter、Azure OpenAI、Amazon Bedrock、Ollama、LM Studio 及 OpenAI-compatible 服务。
-- 支持按对话、Userscript 编程和定时任务选择不同模型。
-- API Key 等自定义 Provider 配置保存在扩展本地存储中。
+### Models and providers
 
-### MCP、应用连接与开发工作流
+- Use the GreaseClaw provider to select models and monitor your FreeAPIs balance.
+- Configure OpenAI, Anthropic, Google, OpenRouter, Azure OpenAI, Amazon Bedrock, Ollama, LM Studio, and OpenAI-compatible services.
+- Select different models for chat, Userscript coding, and scheduled tasks.
+- Keep custom provider settings such as API keys in extension-local storage.
 
-- 通过 MCP 连接外部应用，让智能体处理邮件、日历和其他服务中的任务。
-- 浏览器能力可提供给兼容 MCP 的编程智能体，用于读取页面、操作界面、查看控制台和完成 Web 调试。
-- 支持本地与云端桥接，使 Userscript 编程工具在两种执行模式下保持一致。
-- 提供 Skills 管理、使用额度、账户资料、中英文界面及亮色/暗色主题。
+### MCP, app connections, and development workflows
 
-## 本地能力与云端能力
+- Connect external applications through MCP so the agent can work with email, calendars, and other services.
+- Expose browser capabilities to compatible MCP coding agents for page inspection, UI interaction, console access, and web debugging.
+- Bridge local and cloud execution while keeping the Userscript coding toolset consistent in both modes.
+- Manage Skills, usage and billing, account details, language, and light/dark themes.
 
-GreaseClaw 的脚本管理、代码编辑和自定义 Provider 可以直接在扩展中工作。以下功能需要登录 FreeAPIs：
+## Local and cloud capabilities
 
-- GreaseClaw Provider 及其模型额度；
-- 云端任务与云端浏览器；
-- 账户资料、用量和账单信息；
-- 需要服务端授权的应用连接与数据同步。
+Userscript management, code editing, and custom providers can work directly in the extension. The following features require a FreeAPIs account:
 
-使用 Userscript 或浏览器智能体操作网站时，扩展会按实际目标域名申请站点访问权限。未授权的网站不会被脚本或智能体静默访问。
+- the GreaseClaw provider and its model balance;
+- cloud tasks and cloud browser execution;
+- account profile, usage, and billing information;
+- app connections and synchronization that require server authorization.
 
-## 安装发布版
+When a Userscript or browser task needs access to a website, GreaseClaw requests permission for the relevant origin. Scripts and agents cannot silently access sites that have not been authorized.
 
-从 [GitHub Releases](https://github.com/greaseclaw/greaseclaw/releases/latest) 下载对应浏览器的 ZIP：
+## Install a release
 
-1. 解压下载的文件。
-2. 打开 `chrome://extensions`；Edge 使用 `edge://extensions`。
-3. 开启“开发者模式”。
-4. 选择“加载已解压的扩展程序”，然后选择解压后的目录。
-5. 固定 GreaseClaw 图标，点击图标即可打开侧栏、Userscript、定时任务和设置等入口。
+Download the ZIP for your browser from [GitHub Releases](https://github.com/greaseclaw/greaseclaw/releases/latest):
 
-Chrome 的 `userScripts` API 需要浏览器开发者模式。若 Userscript 无法注册，请先确认开发者模式已开启，并在扩展详情页授予脚本目标网站的访问权限。
+1. Extract the downloaded ZIP.
+2. Open `chrome://extensions`; use `edge://extensions` in Edge.
+3. Enable **Developer mode**.
+4. Choose **Load unpacked** and select the extracted directory.
+5. Pin GreaseClaw to reach the side panel, Userscripts, scheduled tasks, and settings quickly.
 
-## 开发
+Chrome's `userScripts` API requires Developer mode. If a Userscript cannot be registered, confirm that Developer mode is enabled and grant GreaseClaw access to the script's target sites from the extension details page.
 
-### 环境要求
+## Development
 
-- [Bun](https://bun.sh/) 1.3.6 或更高版本
-- Chrome 120 或更高版本
+### Requirements
 
-### 初始化
+- [Bun](https://bun.sh/) 1.3.6 or later
+- Chrome 120 or later
+
+### Setup
 
 ```bash
 cp .env.development.example .env.development
 bun install
 ```
 
-开发环境默认连接 `https://freeapis.xyz`。如需连接其他 Controller 或 API 服务，请修改 `.env.development` 中对应的地址。
+The development environment connects to `https://freeapis.xyz` by default. Edit the corresponding addresses in `.env.development` to use another Controller or API service.
 
-### 启动开发环境
+### Start development
 
 ```bash
 bun run dev
 ```
 
-当前 `scripts/dev.ts` 会启动 WXT 文件监听，并使用系统稳定版 Chrome `/opt/google/chrome/chrome`、用户数据目录 `/home/wangyi/.config/google-chrome-debug` 和其中的 `Profile 1`。该 Profile 应预先从以下目录安装开发扩展：
+The current development script starts the WXT watcher and stable Chrome at `/opt/google/chrome/chrome`, using `/home/wangyi/.config/google-chrome-debug` and its existing `Profile 1`. Install the development extension in that profile from:
 
 ```text
 apps/app/dist/chrome-mv3-dev
 ```
 
-启动脚本不会使用 `--load-extension` 临时加载另一个扩展实例，因此登录状态、权限与扩展 ID 可以在开发过程中保持稳定。
+The launcher intentionally does not use `--load-extension`, so the extension ID, sign-in state, and permissions remain stable between development runs.
 
-### 检查与构建
+### Check and build
 
 ```bash
 bun run typecheck
@@ -117,13 +119,9 @@ bun run --filter @greaseclaw/app test
 bun run build
 ```
 
-开发构建输出到：
+The development build is written to `apps/app/dist/chrome-mv3`.
 
-```text
-apps/app/dist/chrome-mv3
-```
-
-### 生成发布包
+### Create release archives
 
 ```bash
 cd apps/app
@@ -131,40 +129,38 @@ bun run release
 bun run release:edge
 ```
 
-Chrome 和 Edge ZIP 最终会复制到仓库根目录的 `releases/` 中。
+The Chrome and Edge ZIP files are copied to the repository-level `releases/` directory.
 
-## 项目结构
+## Repository structure
 
 ```text
 greaseclaw/
 ├── apps/
-│   ├── app/                 # 扩展页面、后台服务、侧栏、弹窗与业务 UI
-│   └── local-browser-mcp/   # 本地 Browser MCP 入口
+│   ├── app/                 # Extension pages, background worker, side panel, popup, and UI
+│   └── local-browser-mcp/   # Local Browser MCP entry point
 ├── packages/
-│   ├── browser-core/        # 浏览器会话与执行基础能力
-│   ├── browser-mcp/         # 暴露给智能体的浏览器工具
-│   ├── cdp-protocol/        # Chrome DevTools Protocol 类型
-│   ├── server/              # 浏览器内智能体共享的提示词与运行契约
-│   └── shared/              # 公共常量、类型与 Schema
-├── scripts/dev.ts           # 开发监听与 Chrome 启动入口
-└── releases/                # Chrome / Edge 发布包
+│   ├── browser-core/        # Browser session and execution primitives
+│   ├── browser-mcp/         # Browser tools exposed to agents
+│   ├── cdp-protocol/        # Chrome DevTools Protocol types
+│   ├── server/              # Shared prompts and runtime contracts for the in-browser agent
+│   └── shared/              # Shared constants, types, and schemas
+├── scripts/dev.ts           # Development watcher and Chrome launcher
+└── releases/                # Chrome and Edge release archives
 ```
 
-GreaseClaw 使用 Bun workspace 管理多包工程，扩展基于 React、TypeScript、WXT 和 Chrome Manifest V3 构建。
+GreaseClaw is a Bun workspace. The extension is built with React, TypeScript, WXT, and Chrome Manifest V3.
 
-## 权限说明
+## Permissions
 
-GreaseClaw 只申请实现核心功能所需的浏览器权限：
+- `storage`: stores settings, sessions, providers, and Userscripts.
+- `tabs` and `sidePanel`: reads current-tab state and presents the assistant alongside pages.
+- `debugger`: provides CDP capabilities for browser automation and debugging initiated by the user.
+- `alarms`: schedules local tasks.
+- `userScripts`: registers and runs enabled Userscripts.
+- `notifications`: reports results from background and scheduled tasks.
+- Optional site access: requested only when Userscript metadata or a specific task needs an origin.
 
-- `storage`：保存设置、会话、Provider 和 Userscript。
-- `tabs`、`sidePanel`：读取当前标签页状态并显示侧栏。
-- `debugger`：为获得用户授权的浏览器自动化与调试任务提供 CDP 能力。
-- `alarms`：调度本地定时任务。
-- `userScripts`：安全注册和运行已启用的 Userscript。
-- `notifications`：通知后台或定时任务的执行结果。
-- 可选网站权限：仅在 Userscript 元数据或具体任务需要访问某个网站时请求。
+## Links
 
-## 发布
-
-- [最新版本与历史版本](https://github.com/greaseclaw/greaseclaw/releases)
-- [项目主页](https://github.com/greaseclaw/greaseclaw)
+- [Releases](https://github.com/greaseclaw/greaseclaw/releases)
+- [GitHub repository](https://github.com/greaseclaw/greaseclaw)
