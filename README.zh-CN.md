@@ -78,7 +78,7 @@ Userscript 工作区与普通聊天使用同一套智能体，只额外暴露读
 4. 选择“加载已解压的扩展程序”，然后选择解压后的目录。
 5. 固定 GreaseClaw 图标，即可快速进入侧栏、Userscript、定时任务和设置。
 
-Chrome 的 `userScripts` API 需要浏览器开发者模式。若 Userscript 无法注册，请确认开发者模式已开启，并在扩展详情页授予脚本目标网站的访问权限。
+Chrome 要求用户明确启用 `userScripts` API。Chrome 138 或更高版本请打开 GreaseClaw 扩展详情并启用“允许用户脚本”；Chrome 120–137 如有需要请开启“开发者模式”。若脚本仍无法注册，请在同一详情页授予 GreaseClaw 对脚本目标网站的访问权限。
 
 ## 开发
 
