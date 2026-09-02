@@ -78,7 +78,7 @@ Download the ZIP for your browser from [GitHub Releases](https://github.com/grea
 4. Choose **Load unpacked** and select the extracted directory.
 5. Pin GreaseClaw to reach the side panel, Userscripts, scheduled tasks, and settings quickly.
 
-Chrome's `userScripts` API requires Developer mode. If a Userscript cannot be registered, confirm that Developer mode is enabled and grant GreaseClaw access to the script's target sites from the extension details page.
+Chrome requires users to explicitly allow the `userScripts` API. On Chrome 138 or later, open GreaseClaw's extension details and enable **Allow User Scripts**. On Chrome 120–137, enable **Developer mode** if required. If a script still cannot be registered, grant GreaseClaw access to the script's target sites from the same details page.
 
 ## Development
 
