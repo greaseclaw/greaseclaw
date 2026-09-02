@@ -157,7 +157,6 @@ GreaseClaw is a Bun workspace. The extension is built with React, TypeScript, WX
 - `debugger`: provides CDP capabilities for browser automation and debugging initiated by the user.
 - `alarms`: schedules local tasks.
 - `userScripts`: registers and runs enabled Userscripts.
-- `notifications`: reports results from background and scheduled tasks.
 - Optional site access: requested only when Userscript metadata or a specific task needs an origin.
 
 ## Links
