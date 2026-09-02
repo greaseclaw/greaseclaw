@@ -7,7 +7,6 @@ This document contains reviewer-facing text for GreaseClaw `0.0.108`. The Englis
 Compared with `0.0.103`, this release adds:
 
 - the `userScripts` permission;
-- the `notifications` permission;
 - required host access for Greasy Fork, OpenUserJS, and Sleazy Fork domains, used by the Userscript installation flow.
 
 The existing `storage`, `debugger`, `tabs`, `sidePanel`, `alarms`, FreeAPIs hosts, `raw.githubusercontent.com`, and optional HTTP/HTTPS host permissions are not new in this release.
@@ -27,12 +26,6 @@ Paste into **Privacy practices → Single purpose description**:
 > GreaseClaw includes a user-facing Userscript manager and editor. This permission is required to register and execute scripts that the user explicitly creates, imports, reviews, installs, or enables. AI-generated scripts are shown in the editor and remain under the user's control before installation. Scripts run only on URLs allowed by their metadata and by Chrome site permissions. GreaseClaw uses the documented `chrome.userScripts` API and does not execute these scripts in the extension's privileged context.
 
 中文说明：该权限用于安装和运行用户创建、导入或经 AI 生成并确认的 Userscript。脚本只会在元数据匹配且 Chrome 已授权的网站运行。
-
-### `notifications`
-
-> This permission implements the standard `GM_notification` Userscript capability. A notification is created only when an installed and enabled user script explicitly requests one, so scripts can report the result of a user-configured background action. GreaseClaw does not use notifications for advertising or unsolicited promotional messages.
-
-中文说明：新增该权限是为了兼容 Userscript 的 `GM_notification`，仅在已安装脚本主动调用时显示通知，不用于广告。
 
 ### Required host permissions for Userscript catalogs
 
@@ -88,7 +81,7 @@ Keep these available in case the dashboard asks for every Manifest permission ag
 
 Select **Yes, I am using remote code**, then paste:
 
-> GreaseClaw executes code supplied or selected by the user, including scripts imported from a URL and scripts generated from the user's request by an AI model. It executes this code only through Chrome's documented `chrome.userScripts` API, the Manifest V3 API specifically provided for user-supplied scripts and permitted by the Chrome Web Store MV3 policy. Code is displayed in an editable review screen and must be explicitly installed or enabled by the user. Chrome host permissions and script metadata separately control target-site access. Scripts run in the `USER_SCRIPT` world and use only a limited compatibility bridge for values, tabs, notifications, and metadata-authorized requests. GreaseClaw does not load remote JavaScript into extension pages or its service worker, and does not use `eval`, remote `<script>` tags, or a custom interpreter in the privileged extension context.
+> GreaseClaw executes code supplied or selected by the user, including scripts imported from a URL and scripts generated from the user's request by an AI model. It executes this code only through Chrome's documented `chrome.userScripts` API, the Manifest V3 API specifically provided for user-supplied scripts and permitted by the Chrome Web Store MV3 policy. Code is displayed in an editable review screen and must be explicitly installed or enabled by the user. Chrome host permissions and script metadata separately control target-site access. Scripts run in the `USER_SCRIPT` world and use only a limited compatibility bridge for values, tabs, and metadata-authorized requests. GreaseClaw does not load remote JavaScript into extension pages or its service worker, and does not use `eval`, remote `<script>` tags, or a custom interpreter in the privileged extension context.
 
 中文说明：必须选择 Yes。Manifest V3 政策明确把 Debugger API 和 User Scripts API 列为允许执行外部逻辑的两种 API，但仍然需要如实声明用途和边界。
 
