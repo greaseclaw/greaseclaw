@@ -151,7 +151,6 @@ greaseclaw/
 - `debugger`：为获得用户授权的浏览器自动化与调试任务提供 CDP 能力。
 - `alarms`：调度本地定时任务。
 - `userScripts`：注册和运行已启用的 Userscript。
-- `notifications`：通知后台或定时任务的执行结果。
 - 可选网站权限：仅在 Userscript 元数据或具体任务需要访问某个网站时请求。
 
 ## 链接
