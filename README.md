@@ -4,7 +4,7 @@ English | [简体中文](README.zh-CN.md)
 
 GreaseClaw is an AI browser assistant for Chrome and Edge. It brings LLM chat, browser automation, Userscript management and AI coding, scheduled tasks, and cloud execution into one extension—so you can read pages, operate websites, write scripts, and automate repetitive work using natural language.
 
-> Current version: `0.0.108` · Requires Chrome 120 or later
+> Current version: `0.0.110` · Requires Chrome 120 or later
 
 ## Features
 
